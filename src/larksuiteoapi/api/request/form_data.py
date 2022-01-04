@@ -19,15 +19,14 @@ class FormDataFile(object):
             return
         tmp_file_path = tempfile.mktemp('.larksuiteoapisdk')
         current_file = self.content  # type: Union[IO[Any], bytes]
-        tmp_file = open(tmp_file_path, 'wb')
-        if isinstance(current_file, bytes):
-            current_file_bytes = current_file
-            tmp_file.write(current_file_bytes)
-        else:
-            for content in current_file:
-                tmp_file.write(content)
-        tmp_file.flush()
-        tmp_file.close()
+        with open(tmp_file_path, 'wb') as tmp_file:
+            if isinstance(current_file, bytes):
+                current_file_bytes = current_file
+                tmp_file.write(current_file_bytes)
+            else:
+                for content in current_file:
+                    tmp_file.write(content)
+            tmp_file.flush()
         self.file_path = tmp_file_path
         self.__prepared = True
 
@@ -53,7 +52,6 @@ class FormData(object):
         # type: () -> Tuple[List[Tuple[str, Tuple[str, IO, str]]], Dict[str, str], List[IO]]
 
         ret_files = []  # type: List[Tuple[str, Tuple[str, Union[bytes, IO], str]]]
-        ret_data = {}  # type: Dict[str, Union[bytes, str]]
         need_close = []  # type: List[IO[Any]]
 
         for file in self.files:
@@ -69,9 +67,7 @@ class FormData(object):
                 f = (file.field_name, (file.name, content, 'application/octet-stream'))
             ret_files += [f]
 
-        for key, value in self.params.items():
-            ret_data[key] = value
-
+        ret_data = dict(self.params.items())
         return ret_files, ret_data, need_close
 
     def delete_tmp_files(self):

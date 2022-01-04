@@ -169,13 +169,10 @@ class AccessRecordListReqCall(object):
         # type: (AccessRecordService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_page_size(self, page_size):
         # type: (int) -> AccessRecordListReqCall
@@ -215,8 +212,7 @@ class AccessRecordListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/acs/v1/access_records', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=AccessRecordListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AccessRecordAccessPhotoGetReqCall(object):
@@ -224,13 +220,10 @@ class AccessRecordAccessPhotoGetReqCall(object):
         # type: (AccessRecordAccessPhotoService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_access_record_id(self, access_record_id):
         # type: (int) -> AccessRecordAccessPhotoGetReqCall
@@ -246,8 +239,7 @@ class AccessRecordAccessPhotoGetReqCall(object):
         self.request_opts += [set_is_response_stream()]
         req = APIRequest('/open-apis/acs/v1/access_records/:access_record_id/access_photo', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DeviceListReqCall(object):
@@ -255,12 +247,9 @@ class DeviceListReqCall(object):
         # type: (DeviceService, List[Any]) -> None
 
         self.service = service
-        
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[DeviceListResult]]
@@ -269,8 +258,7 @@ class DeviceListReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/acs/v1/devices', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=DeviceListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class UserPatchReqCall(object):
@@ -282,10 +270,7 @@ class UserPatchReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id(self, user_id):
         # type: (str) -> UserPatchReqCall
@@ -306,8 +291,7 @@ class UserPatchReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/acs/v1/users/:user_id', 'PATCH', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class UserGetReqCall(object):
@@ -315,14 +299,11 @@ class UserGetReqCall(object):
         # type: (UserService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id(self, user_id):
         # type: (str) -> UserGetReqCall
@@ -343,8 +324,7 @@ class UserGetReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/acs/v1/users/:user_id', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=UserGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class UserListReqCall(object):
@@ -352,13 +332,10 @@ class UserListReqCall(object):
         # type: (UserService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_page_size(self, page_size):
         # type: (int) -> UserListReqCall
@@ -383,8 +360,7 @@ class UserListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/acs/v1/users', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=UserListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class UserFaceGetReqCall(object):
@@ -392,14 +368,11 @@ class UserFaceGetReqCall(object):
         # type: (UserFaceService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id(self, user_id):
         # type: (str) -> UserFaceGetReqCall
@@ -426,8 +399,7 @@ class UserFaceGetReqCall(object):
         self.request_opts += [set_is_response_stream()]
         req = APIRequest('/open-apis/acs/v1/users/:user_id/face', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class UserFaceUpdateReqCall(object):
@@ -439,10 +411,7 @@ class UserFaceUpdateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_files(self, files):
         # type: (IO[Any]) -> UserFaceUpdateReqCall
@@ -477,6 +446,5 @@ class UserFaceUpdateReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/acs/v1/users/:user_id/face', 'PUT', [ACCESS_TOKEN_TYPE_TENANT], self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

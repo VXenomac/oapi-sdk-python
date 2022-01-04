@@ -21,10 +21,7 @@ class Context(object):
 
     def set_request_id(self, log_id, request_id):
         # type: (Union[None, str], Union[None, str]) -> None
-        if log_id:
-            self.__data[HTTP_HEADER_KEY_REQUEST_ID] = log_id
-        else:
-            self.__data[HTTP_HEADER_KEY_REQUEST_ID] = request_id
+        self.__data[HTTP_HEADER_KEY_REQUEST_ID] = log_id or request_id
 
     def get_header(self):  # type: () -> OapiHeader
         header = self.__data[HTTP_HEADER_KEY]

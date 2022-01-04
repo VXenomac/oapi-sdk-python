@@ -18,40 +18,37 @@ service = ImageV4Service(conf)
 
 
 def test_image_put():
-    img = open('./test.png', 'rb')
-    resp = service.images.put().set_image(img).set_image_type("message").do()
-    print('request id = %s' % resp.get_request_id())
-    print(resp.code)
-    if resp.code == 0:
-        print(resp.data.image_key)
-    else:
-        print(resp.msg)
-        print(resp.error)
-    img.close()
+    with open('./test.png', 'rb') as img:
+        resp = service.images.put().set_image(img).set_image_type("message").do()
+        print('request id = %s' % resp.get_request_id())
+        print(resp.code)
+        if resp.code == 0:
+            print(resp.data.image_key)
+        else:
+            print(resp.msg)
+            print(resp.error)
 
 
 def test_image_put_bytes():
-    img = open('./test.png', 'rb')
-    resp = service.images.put().set_image(img.read()).set_image_type("message").do()
-    print('request id = %s' % resp.get_request_id())
-    print(resp.code)
-    if resp.code == 0:
-        print(resp.data.image_key)
-    else:
-        print(resp.msg)
-        print(resp.error)
-    img.close()
+    with open('./test.png', 'rb') as img:
+        resp = service.images.put().set_image(img.read()).set_image_type("message").do()
+        print('request id = %s' % resp.get_request_id())
+        print(resp.code)
+        if resp.code == 0:
+            print(resp.data.image_key)
+        else:
+            print(resp.msg)
+            print(resp.error)
 
 
 def test_image_get():
-    f = open('./aa.png', 'wb')
-    resp = service.images.get(response_stream=f).set_image_key("img_a3183080-928f-4bb7-b256-177523c762eg").do()
-    print('request id = %s' % resp.get_request_id())
-    print(resp.code)
-    if resp.code != 0:
-        print(resp.msg)
-        print(resp.error)
-    f.close()
+    with open('./aa.png', 'wb') as f:
+        resp = service.images.get(response_stream=f).set_image_key("img_a3183080-928f-4bb7-b256-177523c762eg").do()
+        print('request id = %s' % resp.get_request_id())
+        print(resp.code)
+        if resp.code != 0:
+            print(resp.msg)
+            print(resp.error)
 
 
 def test_image_get_bytes():
@@ -59,9 +56,8 @@ def test_image_get_bytes():
     print('request id = %s' % resp.get_request_id())
     print(resp.code)
     if resp.code == 0:
-        f = open('./aa3.png', 'wb')
-        f.write(resp.data)
-        f.close()
+        with open('./aa3.png', 'wb') as f:
+            f.write(resp.data)
     else:
         print(resp.msg)
         print(resp.error)

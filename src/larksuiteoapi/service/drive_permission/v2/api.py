@@ -65,10 +65,7 @@ class PublicGetReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[PublicGetResult]]
@@ -77,8 +74,7 @@ class PublicGetReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/permission/v2/public', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=PublicGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class PublicUpdateReqCall(object):
@@ -88,10 +84,7 @@ class PublicUpdateReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[None]]
@@ -100,6 +93,5 @@ class PublicUpdateReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/permission/v2/public/update', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

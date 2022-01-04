@@ -67,13 +67,10 @@ class AttachmentGetReqCall(object):
         # type: (AttachmentService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_token(self, token):
         # type: (str) -> AttachmentGetReqCall
@@ -89,8 +86,7 @@ class AttachmentGetReqCall(object):
         self.request_opts += [set_is_response_stream()]
         req = APIRequest('/open-apis/ehr/v1/attachments/:token', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class EmployeeListReqCall(object):
@@ -98,13 +94,10 @@ class EmployeeListReqCall(object):
         # type: (EmployeeService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_view(self, view):
         # type: (str) -> EmployeeListReqCall
@@ -159,6 +152,5 @@ class EmployeeListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/ehr/v1/employees', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=EmployeeListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

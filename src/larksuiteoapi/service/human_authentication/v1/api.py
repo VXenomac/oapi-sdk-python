@@ -47,10 +47,7 @@ class IdentityCreateReqCall(object):
         self.body = body
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id(self, user_id):
         # type: (str) -> IdentityCreateReqCall
@@ -70,6 +67,5 @@ class IdentityCreateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/human_authentication/v1/identities', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=IdentityCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

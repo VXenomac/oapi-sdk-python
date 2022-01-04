@@ -89,8 +89,11 @@ class SampleWebhookCardHandler(View):
                                    header=OapiHeader(request.headers))
 
         oapi_resp = handle_card(conf, oapi_request)
-        resp = HttpResponse(oapi_resp.body, status=oapi_resp.status_code, content_type=oapi_resp.content_type)
-        return resp
+        return HttpResponse(
+            oapi_resp.body,
+            status=oapi_resp.status_code,
+            content_type=oapi_resp.content_type,
+        )
 
 
 urlpatterns = [

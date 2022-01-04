@@ -43,5 +43,4 @@ class Manager(object):
 
     @staticmethod
     def __key(app_id, event_type):  # type: (str, str) -> str
-        key = '%s-%s' % (app_id, event_type)
-        return key
+        return '%s-%s' % (app_id, event_type)

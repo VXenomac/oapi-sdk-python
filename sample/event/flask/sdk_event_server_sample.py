@@ -21,7 +21,6 @@ def user_update_handle(ctx, conf, event):
     print(ctx.get_request_id())
     print(event.header)
     print(event.event)
-    pass
 
 
 # set event type 'contact.user.updated_v3' handle

@@ -39,12 +39,7 @@ class Request(Generic[T]):
     def __init__(self, http_path, http_method, access_token_types, request_body, output_class=dict, request_opts=None):
         # type: (str, str, Union[List[str], str], Any, T, List[Callable[[Option], Any]]) -> None
 
-        if request_opts:
-            # type: List[Callable[[Option], Any]]
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Callable[[Option], Any]]
-
+        self.request_opts = request_opts or []
         self.http_path = http_path
         self.http_method = http_method
         if isinstance(access_token_types, str):
@@ -211,9 +206,12 @@ class Handlers(object):
             raise ERR_USER_ACCESS_TOKEN_KEY_IS_EMPTY
 
         settings = config.app_settings
-        if settings.app_type == APP_TYPE_ISV:
-            if req.access_token_type == ACCESS_TOKEN_TYPE_TENANT and req.tenant_key == '':
-                raise ERR_TENANT_KEY_IS_EMPTY
+        if (
+            settings.app_type == APP_TYPE_ISV
+            and req.access_token_type == ACCESS_TOKEN_TYPE_TENANT
+            and req.tenant_key == ''
+        ):
+            raise ERR_TENANT_KEY_IS_EMPTY
 
     def build(self):  # type: () -> None
         req = self.req
@@ -328,7 +326,7 @@ class Handlers(object):
                     return self.resp
         except Exception as e:
             exception = e
-            raise e
+            raise exception
         finally:
             self.complement(exception)
         return self.resp

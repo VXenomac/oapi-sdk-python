@@ -442,13 +442,10 @@ class CustomAttrListReqCall(object):
         # type: (CustomAttrService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_page_size(self, page_size):
         # type: (int) -> CustomAttrListReqCall
@@ -468,8 +465,7 @@ class CustomAttrListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/custom_attrs', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=CustomAttrListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DepartmentGetReqCall(object):
@@ -477,14 +473,11 @@ class DepartmentGetReqCall(object):
         # type: (DepartmentService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_department_id(self, department_id):
         # type: (str) -> DepartmentGetReqCall
@@ -510,8 +503,7 @@ class DepartmentGetReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/departments/:department_id', 'GET', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         None, output_class=DepartmentGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DepartmentListReqCall(object):
@@ -519,13 +511,10 @@ class DepartmentListReqCall(object):
         # type: (DepartmentService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id_type(self, user_id_type):
         # type: (str) -> DepartmentListReqCall
@@ -565,8 +554,7 @@ class DepartmentListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/departments', 'GET', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         None, output_class=DepartmentListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DepartmentPatchReqCall(object):
@@ -578,10 +566,7 @@ class DepartmentPatchReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_department_id(self, department_id):
         # type: (str) -> DepartmentPatchReqCall
@@ -607,8 +592,7 @@ class DepartmentPatchReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/departments/:department_id', 'PATCH', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=DepartmentPatchResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DepartmentCreateReqCall(object):
@@ -619,10 +603,7 @@ class DepartmentCreateReqCall(object):
         self.body = body
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id_type(self, user_id_type):
         # type: (str) -> DepartmentCreateReqCall
@@ -647,8 +628,7 @@ class DepartmentCreateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/departments', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=DepartmentCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DepartmentDeleteReqCall(object):
@@ -656,14 +636,11 @@ class DepartmentDeleteReqCall(object):
         # type: (DepartmentService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_department_id(self, department_id):
         # type: (str) -> DepartmentDeleteReqCall
@@ -684,8 +661,7 @@ class DepartmentDeleteReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/departments/:department_id', 'DELETE', [ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DepartmentUpdateReqCall(object):
@@ -697,10 +673,7 @@ class DepartmentUpdateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_department_id(self, department_id):
         # type: (str) -> DepartmentUpdateReqCall
@@ -726,8 +699,7 @@ class DepartmentUpdateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/departments/:department_id', 'PUT', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=DepartmentUpdateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DepartmentParentReqCall(object):
@@ -735,13 +707,10 @@ class DepartmentParentReqCall(object):
         # type: (DepartmentService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id_type(self, user_id_type):
         # type: (str) -> DepartmentParentReqCall
@@ -776,8 +745,7 @@ class DepartmentParentReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/departments/parent', 'GET', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         None, output_class=DepartmentParentResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DepartmentSearchReqCall(object):
@@ -788,10 +756,7 @@ class DepartmentSearchReqCall(object):
         self.body = body
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id_type(self, user_id_type):
         # type: (str) -> DepartmentSearchReqCall
@@ -821,8 +786,7 @@ class DepartmentSearchReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/departments/search', 'POST', [ACCESS_TOKEN_TYPE_USER],
                         self.body, output_class=DepartmentSearchResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class EmployeeTypeEnumListReqCall(object):
@@ -830,13 +794,10 @@ class EmployeeTypeEnumListReqCall(object):
         # type: (EmployeeTypeEnumService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_page_token(self, page_token):
         # type: (str) -> EmployeeTypeEnumListReqCall
@@ -856,8 +817,7 @@ class EmployeeTypeEnumListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/employee_type_enums', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=EmployeeTypeEnumListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class EmployeeTypeEnumCreateReqCall(object):
@@ -867,10 +827,7 @@ class EmployeeTypeEnumCreateReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[EmployeeTypeEnumCreateResult]]
@@ -879,8 +836,7 @@ class EmployeeTypeEnumCreateReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/contact/v3/employee_type_enums', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=EmployeeTypeEnumCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class EmployeeTypeEnumDeleteReqCall(object):
@@ -888,13 +844,10 @@ class EmployeeTypeEnumDeleteReqCall(object):
         # type: (EmployeeTypeEnumService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_enum_id(self, enum_id):
         # type: (str) -> EmployeeTypeEnumDeleteReqCall
@@ -909,8 +862,7 @@ class EmployeeTypeEnumDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/contact/v3/employee_type_enums/:enum_id', 'DELETE', [ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class EmployeeTypeEnumUpdateReqCall(object):
@@ -921,10 +873,7 @@ class EmployeeTypeEnumUpdateReqCall(object):
         self.body = body
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_enum_id(self, enum_id):
         # type: (str) -> EmployeeTypeEnumUpdateReqCall
@@ -939,8 +888,7 @@ class EmployeeTypeEnumUpdateReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/contact/v3/employee_type_enums/:enum_id', 'PUT', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=EmployeeTypeEnumUpdateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class GroupCreateReqCall(object):
@@ -950,10 +898,7 @@ class GroupCreateReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[GroupCreateResult]]
@@ -962,8 +907,7 @@ class GroupCreateReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/contact/v3/group', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=GroupCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class GroupSimplelistReqCall(object):
@@ -971,13 +915,10 @@ class GroupSimplelistReqCall(object):
         # type: (GroupService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_page_size(self, page_size):
         # type: (int) -> GroupSimplelistReqCall
@@ -1002,8 +943,7 @@ class GroupSimplelistReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/group/simplelist', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=GroupSimplelistResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class GroupDeleteReqCall(object):
@@ -1011,13 +951,10 @@ class GroupDeleteReqCall(object):
         # type: (GroupService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_group_id(self, group_id):
         # type: (str) -> GroupDeleteReqCall
@@ -1032,8 +969,7 @@ class GroupDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/contact/v3/group/:group_id', 'DELETE', [ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class GroupGetReqCall(object):
@@ -1041,13 +977,10 @@ class GroupGetReqCall(object):
         # type: (GroupService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_group_id(self, group_id):
         # type: (str) -> GroupGetReqCall
@@ -1062,8 +995,7 @@ class GroupGetReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/contact/v3/group/:group_id', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=GroupGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class GroupPatchReqCall(object):
@@ -1074,10 +1006,7 @@ class GroupPatchReqCall(object):
         self.body = body
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_group_id(self, group_id):
         # type: (str) -> GroupPatchReqCall
@@ -1092,8 +1021,7 @@ class GroupPatchReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/contact/v3/group/:group_id', 'PATCH', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class GroupMemberSimplelistReqCall(object):
@@ -1101,14 +1029,11 @@ class GroupMemberSimplelistReqCall(object):
         # type: (GroupMemberService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_group_id(self, group_id):
         # type: (str) -> GroupMemberSimplelistReqCall
@@ -1144,8 +1069,7 @@ class GroupMemberSimplelistReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/group/:group_id/member/simplelist', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=GroupMemberSimplelistResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class GroupMemberAddReqCall(object):
@@ -1156,10 +1080,7 @@ class GroupMemberAddReqCall(object):
         self.body = body
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_group_id(self, group_id):
         # type: (str) -> GroupMemberAddReqCall
@@ -1174,8 +1095,7 @@ class GroupMemberAddReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/contact/v3/group/:group_id/member/add', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class GroupMemberRemoveReqCall(object):
@@ -1186,10 +1106,7 @@ class GroupMemberRemoveReqCall(object):
         self.body = body
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_group_id(self, group_id):
         # type: (str) -> GroupMemberRemoveReqCall
@@ -1204,8 +1121,7 @@ class GroupMemberRemoveReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/contact/v3/group/:group_id/member/remove', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class UserDeleteReqCall(object):
@@ -1217,10 +1133,7 @@ class UserDeleteReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id(self, user_id):
         # type: (str) -> UserDeleteReqCall
@@ -1241,8 +1154,7 @@ class UserDeleteReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/users/:user_id', 'DELETE', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class UserUpdateReqCall(object):
@@ -1254,10 +1166,7 @@ class UserUpdateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id(self, user_id):
         # type: (str) -> UserUpdateReqCall
@@ -1283,8 +1192,7 @@ class UserUpdateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/users/:user_id', 'PUT', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=UserUpdateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class UserCreateReqCall(object):
@@ -1295,10 +1203,7 @@ class UserCreateReqCall(object):
         self.body = body
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id_type(self, user_id_type):
         # type: (str) -> UserCreateReqCall
@@ -1323,8 +1228,7 @@ class UserCreateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/users', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=UserCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class UserPatchReqCall(object):
@@ -1336,10 +1240,7 @@ class UserPatchReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id(self, user_id):
         # type: (str) -> UserPatchReqCall
@@ -1365,8 +1266,7 @@ class UserPatchReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/users/:user_id', 'PATCH', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         self.body, output_class=UserPatchResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class UserGetReqCall(object):
@@ -1374,14 +1274,11 @@ class UserGetReqCall(object):
         # type: (UserService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id(self, user_id):
         # type: (str) -> UserGetReqCall
@@ -1407,8 +1304,7 @@ class UserGetReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/users/:user_id', 'GET', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         None, output_class=UserGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class UserListReqCall(object):
@@ -1416,13 +1312,10 @@ class UserListReqCall(object):
         # type: (UserService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id_type(self, user_id_type):
         # type: (str) -> UserListReqCall
@@ -1457,6 +1350,5 @@ class UserListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/contact/v3/users', 'GET', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         None, output_class=UserListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

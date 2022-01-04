@@ -59,10 +59,7 @@ class SpeechFileRecognizeReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[SpeechFileRecognizeResult]]
@@ -71,8 +68,7 @@ class SpeechFileRecognizeReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/speech_to_text/v1/speech/file_recognize', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=SpeechFileRecognizeResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class SpeechStreamRecognizeReqCall(object):
@@ -82,10 +78,7 @@ class SpeechStreamRecognizeReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[SpeechStreamRecognizeResult]]
@@ -94,6 +87,5 @@ class SpeechStreamRecognizeReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/speech_to_text/v1/speech/stream_recognize', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=SpeechStreamRecognizeResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

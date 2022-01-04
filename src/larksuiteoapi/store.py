@@ -40,14 +40,11 @@ class MemoryStore(Store):
         self.mutex.acquire()
         try:
             val = self.data.get(key)
-            if val is None:
-                return False, ""
-            else:
-                if val.expire < int(time.time()):
-                    self.data.pop(key)
-                    return False, ""
-                else:
+            if val is not None:
+                if val.expire >= int(time.time()):
                     return True, val.value
+                self.data.pop(key)
+            return False, ""
         finally:
             self.mutex.release()
 

@@ -144,10 +144,7 @@ class DataSourceCreateReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[DataSourceCreateResult]]
@@ -156,8 +153,7 @@ class DataSourceCreateReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/search/v2/data_sources', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=DataSourceCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DataSourceDeleteReqCall(object):
@@ -165,13 +161,10 @@ class DataSourceDeleteReqCall(object):
         # type: (DataSourceService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_data_source_id(self, data_source_id):
         # type: (str) -> DataSourceDeleteReqCall
@@ -186,8 +179,7 @@ class DataSourceDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/search/v2/data_sources/:data_source_id', 'DELETE', [ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DataSourceGetReqCall(object):
@@ -195,13 +187,10 @@ class DataSourceGetReqCall(object):
         # type: (DataSourceService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_data_source_id(self, data_source_id):
         # type: (str) -> DataSourceGetReqCall
@@ -216,8 +205,7 @@ class DataSourceGetReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/search/v2/data_sources/:data_source_id', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=DataSourceGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DataSourceListReqCall(object):
@@ -225,13 +213,10 @@ class DataSourceListReqCall(object):
         # type: (DataSourceService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_view(self, view):
         # type: (int) -> DataSourceListReqCall
@@ -256,8 +241,7 @@ class DataSourceListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/search/v2/data_sources', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=DataSourceListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DataSourcePatchReqCall(object):
@@ -268,10 +252,7 @@ class DataSourcePatchReqCall(object):
         self.body = body
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_data_source_id(self, data_source_id):
         # type: (str) -> DataSourcePatchReqCall
@@ -286,8 +267,7 @@ class DataSourcePatchReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/search/v2/data_sources/:data_source_id', 'PATCH', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=DataSourcePatchResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DataSourceItemCreateReqCall(object):
@@ -298,10 +278,7 @@ class DataSourceItemCreateReqCall(object):
         self.body = body
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_data_source_id(self, data_source_id):
         # type: (str) -> DataSourceItemCreateReqCall
@@ -316,8 +293,7 @@ class DataSourceItemCreateReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/search/v2/data_sources/:data_source_id/items', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DataSourceItemDeleteReqCall(object):
@@ -325,13 +301,10 @@ class DataSourceItemDeleteReqCall(object):
         # type: (DataSourceItemService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_data_source_id(self, data_source_id):
         # type: (str) -> DataSourceItemDeleteReqCall
@@ -351,8 +324,7 @@ class DataSourceItemDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/search/v2/data_sources/:data_source_id/items/:item_id', 'DELETE', [ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DataSourceItemGetReqCall(object):
@@ -360,13 +332,10 @@ class DataSourceItemGetReqCall(object):
         # type: (DataSourceItemService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_data_source_id(self, data_source_id):
         # type: (str) -> DataSourceItemGetReqCall
@@ -386,6 +355,5 @@ class DataSourceItemGetReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/search/v2/data_sources/:data_source_id/items/:item_id', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=DataSourceItemGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

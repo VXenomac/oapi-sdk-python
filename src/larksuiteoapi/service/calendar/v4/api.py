@@ -503,10 +503,7 @@ class CalendarCreateReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[CalendarCreateResult]]
@@ -515,8 +512,7 @@ class CalendarCreateReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/calendar/v4/calendars', 'POST', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         self.body, output_class=CalendarCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarPatchReqCall(object):
@@ -527,10 +523,7 @@ class CalendarPatchReqCall(object):
         self.body = body
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarPatchReqCall
@@ -545,8 +538,7 @@ class CalendarPatchReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id', 'PATCH', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         self.body, output_class=CalendarPatchResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarDeleteReqCall(object):
@@ -554,13 +546,10 @@ class CalendarDeleteReqCall(object):
         # type: (CalendarService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarDeleteReqCall
@@ -575,8 +564,7 @@ class CalendarDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id', 'DELETE', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarListReqCall(object):
@@ -584,13 +572,10 @@ class CalendarListReqCall(object):
         # type: (CalendarService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_page_size(self, page_size):
         # type: (int) -> CalendarListReqCall
@@ -615,8 +600,7 @@ class CalendarListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars', 'GET', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         None, output_class=CalendarListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarGetReqCall(object):
@@ -624,13 +608,10 @@ class CalendarGetReqCall(object):
         # type: (CalendarService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarGetReqCall
@@ -645,8 +626,7 @@ class CalendarGetReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id', 'GET', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         None, output_class=Calendar, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarSearchReqCall(object):
@@ -657,10 +637,7 @@ class CalendarSearchReqCall(object):
         self.body = body
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_page_token(self, page_token):
         # type: (str) -> CalendarSearchReqCall
@@ -680,8 +657,7 @@ class CalendarSearchReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/search', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=CalendarSearchResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarUnsubscribeReqCall(object):
@@ -689,13 +665,10 @@ class CalendarUnsubscribeReqCall(object):
         # type: (CalendarService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarUnsubscribeReqCall
@@ -710,8 +683,7 @@ class CalendarUnsubscribeReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id/unsubscribe', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarSubscribeReqCall(object):
@@ -719,13 +691,10 @@ class CalendarSubscribeReqCall(object):
         # type: (CalendarService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarSubscribeReqCall
@@ -740,8 +709,7 @@ class CalendarSubscribeReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id/subscribe', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=CalendarSubscribeResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarSubscriptionReqCall(object):
@@ -749,12 +717,9 @@ class CalendarSubscriptionReqCall(object):
         # type: (CalendarService, List[Any]) -> None
 
         self.service = service
-        
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[None]]
@@ -763,8 +728,7 @@ class CalendarSubscriptionReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/calendar/v4/calendars/subscription', 'POST', [ACCESS_TOKEN_TYPE_USER],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarAclListReqCall(object):
@@ -772,14 +736,11 @@ class CalendarAclListReqCall(object):
         # type: (CalendarAclService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarAclListReqCall
@@ -810,8 +771,7 @@ class CalendarAclListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id/acls', 'GET', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         None, output_class=CalendarAclListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarAclDeleteReqCall(object):
@@ -819,13 +779,10 @@ class CalendarAclDeleteReqCall(object):
         # type: (CalendarAclService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarAclDeleteReqCall
@@ -845,8 +802,7 @@ class CalendarAclDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id/acls/:acl_id', 'DELETE', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarAclCreateReqCall(object):
@@ -858,10 +814,7 @@ class CalendarAclCreateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarAclCreateReqCall
@@ -882,8 +835,7 @@ class CalendarAclCreateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id/acls', 'POST', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         self.body, output_class=CalendarAcl, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarAclSubscriptionReqCall(object):
@@ -891,13 +843,10 @@ class CalendarAclSubscriptionReqCall(object):
         # type: (CalendarAclService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarAclSubscriptionReqCall
@@ -912,8 +861,7 @@ class CalendarAclSubscriptionReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id/acls/subscription', 'POST', [ACCESS_TOKEN_TYPE_USER],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarEventDeleteReqCall(object):
@@ -921,14 +869,11 @@ class CalendarEventDeleteReqCall(object):
         # type: (CalendarEventService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarEventDeleteReqCall
@@ -954,8 +899,7 @@ class CalendarEventDeleteReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id/events/:event_id', 'DELETE', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarEventGetReqCall(object):
@@ -963,13 +907,10 @@ class CalendarEventGetReqCall(object):
         # type: (CalendarEventService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarEventGetReqCall
@@ -989,8 +930,7 @@ class CalendarEventGetReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id/events/:event_id', 'GET', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         None, output_class=CalendarEventGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarEventCreateReqCall(object):
@@ -1001,10 +941,7 @@ class CalendarEventCreateReqCall(object):
         self.body = body
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarEventCreateReqCall
@@ -1019,8 +956,7 @@ class CalendarEventCreateReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id/events', 'POST', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         self.body, output_class=CalendarEventCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarEventListReqCall(object):
@@ -1028,14 +964,11 @@ class CalendarEventListReqCall(object):
         # type: (CalendarEventService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarEventListReqCall
@@ -1081,8 +1014,7 @@ class CalendarEventListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id/events', 'GET', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         None, output_class=CalendarEventListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarEventPatchReqCall(object):
@@ -1093,10 +1025,7 @@ class CalendarEventPatchReqCall(object):
         self.body = body
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarEventPatchReqCall
@@ -1116,8 +1045,7 @@ class CalendarEventPatchReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id/events/:event_id', 'PATCH', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         self.body, output_class=CalendarEventPatchResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarEventSearchReqCall(object):
@@ -1129,10 +1057,7 @@ class CalendarEventSearchReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarEventSearchReqCall
@@ -1163,8 +1088,7 @@ class CalendarEventSearchReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id/events/search', 'POST', [ACCESS_TOKEN_TYPE_USER],
                         self.body, output_class=CalendarEventSearchResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarEventSubscriptionReqCall(object):
@@ -1172,13 +1096,10 @@ class CalendarEventSubscriptionReqCall(object):
         # type: (CalendarEventService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarEventSubscriptionReqCall
@@ -1193,8 +1114,7 @@ class CalendarEventSubscriptionReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id/events/subscription', 'POST', [ACCESS_TOKEN_TYPE_USER],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarEventAttendeeListReqCall(object):
@@ -1202,14 +1122,11 @@ class CalendarEventAttendeeListReqCall(object):
         # type: (CalendarEventAttendeeService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarEventAttendeeListReqCall
@@ -1245,8 +1162,7 @@ class CalendarEventAttendeeListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id/events/:event_id/attendees', 'GET', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         None, output_class=CalendarEventAttendeeListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarEventAttendeeBatchDeleteReqCall(object):
@@ -1257,10 +1173,7 @@ class CalendarEventAttendeeBatchDeleteReqCall(object):
         self.body = body
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarEventAttendeeBatchDeleteReqCall
@@ -1280,8 +1193,7 @@ class CalendarEventAttendeeBatchDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id/events/:event_id/attendees/batch_delete', 'POST', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarEventAttendeeCreateReqCall(object):
@@ -1293,10 +1205,7 @@ class CalendarEventAttendeeCreateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarEventAttendeeCreateReqCall
@@ -1322,8 +1231,7 @@ class CalendarEventAttendeeCreateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id/events/:event_id/attendees', 'POST', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         self.body, output_class=CalendarEventAttendeeCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CalendarEventAttendeeChatMemberListReqCall(object):
@@ -1331,14 +1239,11 @@ class CalendarEventAttendeeChatMemberListReqCall(object):
         # type: (CalendarEventAttendeeChatMemberService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_calendar_id(self, calendar_id):
         # type: (str) -> CalendarEventAttendeeChatMemberListReqCall
@@ -1374,8 +1279,7 @@ class CalendarEventAttendeeChatMemberListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/calendar/v4/calendars/:calendar_id/events/:event_id/attendees/:attendee_id/chat_members', 'GET', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         None, output_class=CalendarEventAttendeeChatMemberListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class FreebusyListReqCall(object):
@@ -1386,10 +1290,7 @@ class FreebusyListReqCall(object):
         self.body = body
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id_type(self, user_id_type):
         # type: (str) -> FreebusyListReqCall
@@ -1404,8 +1305,7 @@ class FreebusyListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/calendar/v4/freebusy/list', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=FreebusyListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class SettingGenerateCaldavConfReqCall(object):
@@ -1415,10 +1315,7 @@ class SettingGenerateCaldavConfReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[SettingGenerateCaldavConfResult]]
@@ -1427,8 +1324,7 @@ class SettingGenerateCaldavConfReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/calendar/v4/settings/generate_caldav_conf', 'POST', [ACCESS_TOKEN_TYPE_USER],
                         self.body, output_class=SettingGenerateCaldavConfResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TimeoffEventDeleteReqCall(object):
@@ -1436,13 +1332,10 @@ class TimeoffEventDeleteReqCall(object):
         # type: (TimeoffEventService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_timeoff_event_id(self, timeoff_event_id):
         # type: (str) -> TimeoffEventDeleteReqCall
@@ -1457,8 +1350,7 @@ class TimeoffEventDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/calendar/v4/timeoff_events/:timeoff_event_id', 'DELETE', [ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TimeoffEventCreateReqCall(object):
@@ -1469,10 +1361,7 @@ class TimeoffEventCreateReqCall(object):
         self.body = body
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id_type(self, user_id_type):
         # type: (str) -> TimeoffEventCreateReqCall
@@ -1487,6 +1376,5 @@ class TimeoffEventCreateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/calendar/v4/timeoff_events', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=TimeoffEvent, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

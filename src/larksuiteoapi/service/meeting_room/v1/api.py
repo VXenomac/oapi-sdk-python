@@ -301,13 +301,10 @@ class BuildingBatchGetReqCall(object):
         # type: (BuildingService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_building_ids(self, building_ids):
         # type: (List[str]) -> BuildingBatchGetReqCall
@@ -327,8 +324,7 @@ class BuildingBatchGetReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/meeting_room/building/batch_get', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=BuildingBatchGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class BuildingBatchGetIdReqCall(object):
@@ -336,13 +332,10 @@ class BuildingBatchGetIdReqCall(object):
         # type: (BuildingService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_custom_building_ids(self, custom_building_ids):
         # type: (List[str]) -> BuildingBatchGetIdReqCall
@@ -357,8 +350,7 @@ class BuildingBatchGetIdReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/meeting_room/building/batch_get_id', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=BuildingBatchGetIdResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class BuildingCreateReqCall(object):
@@ -368,10 +360,7 @@ class BuildingCreateReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[BuildingCreateResult]]
@@ -380,8 +369,7 @@ class BuildingCreateReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/meeting_room/building/create', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=BuildingCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class BuildingDeleteReqCall(object):
@@ -391,10 +379,7 @@ class BuildingDeleteReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[None]]
@@ -403,8 +388,7 @@ class BuildingDeleteReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/meeting_room/building/delete', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class BuildingListReqCall(object):
@@ -412,13 +396,10 @@ class BuildingListReqCall(object):
         # type: (BuildingService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_order_by(self, order_by):
         # type: (str) -> BuildingListReqCall
@@ -448,8 +429,7 @@ class BuildingListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/meeting_room/building/list', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=BuildingListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class BuildingUpdateReqCall(object):
@@ -459,10 +439,7 @@ class BuildingUpdateReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[None]]
@@ -471,8 +448,7 @@ class BuildingUpdateReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/meeting_room/building/update', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class CountryListReqCall(object):
@@ -480,12 +456,9 @@ class CountryListReqCall(object):
         # type: (CountryService, List[Any]) -> None
 
         self.service = service
-        
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[CountryListResult]]
@@ -494,8 +467,7 @@ class CountryListReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/meeting_room/country/list', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=CountryListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DistrictListReqCall(object):
@@ -503,13 +475,10 @@ class DistrictListReqCall(object):
         # type: (DistrictService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_country_id(self, country_id):
         # type: (int) -> DistrictListReqCall
@@ -524,8 +493,7 @@ class DistrictListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/meeting_room/district/list', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=DistrictListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class FreebusyBatchGetReqCall(object):
@@ -533,13 +501,10 @@ class FreebusyBatchGetReqCall(object):
         # type: (FreebusyService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_room_ids(self, room_ids):
         # type: (List[str]) -> FreebusyBatchGetReqCall
@@ -564,8 +529,7 @@ class FreebusyBatchGetReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/meeting_room/freebusy/batch_get', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=FreebusyBatchGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class InstanceReplyReqCall(object):
@@ -575,10 +539,7 @@ class InstanceReplyReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[None]]
@@ -587,8 +548,7 @@ class InstanceReplyReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/meeting_room/instance/reply', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class RoomBatchGetReqCall(object):
@@ -596,13 +556,10 @@ class RoomBatchGetReqCall(object):
         # type: (RoomService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_room_ids(self, room_ids):
         # type: (List[str]) -> RoomBatchGetReqCall
@@ -622,8 +579,7 @@ class RoomBatchGetReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/meeting_room/room/batch_get', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=RoomBatchGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class RoomBatchGetIdReqCall(object):
@@ -631,13 +587,10 @@ class RoomBatchGetIdReqCall(object):
         # type: (RoomService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_custom_room_ids(self, custom_room_ids):
         # type: (List[str]) -> RoomBatchGetIdReqCall
@@ -652,8 +605,7 @@ class RoomBatchGetIdReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/meeting_room/room/batch_get_id', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=RoomBatchGetIdResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class RoomCreateReqCall(object):
@@ -663,10 +615,7 @@ class RoomCreateReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[RoomCreateResult]]
@@ -675,8 +624,7 @@ class RoomCreateReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/meeting_room/room/create', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=RoomCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class RoomDeleteReqCall(object):
@@ -686,10 +634,7 @@ class RoomDeleteReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[None]]
@@ -698,8 +643,7 @@ class RoomDeleteReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/meeting_room/room/delete', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class RoomListReqCall(object):
@@ -707,13 +651,10 @@ class RoomListReqCall(object):
         # type: (RoomService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_building_id(self, building_id):
         # type: (str) -> RoomListReqCall
@@ -748,8 +689,7 @@ class RoomListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/meeting_room/room/list', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=RoomListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class RoomUpdateReqCall(object):
@@ -759,10 +699,7 @@ class RoomUpdateReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[None]]
@@ -771,8 +708,7 @@ class RoomUpdateReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/meeting_room/room/update', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class SummaryBatchGetReqCall(object):
@@ -782,10 +718,7 @@ class SummaryBatchGetReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[SummaryBatchGetResult]]
@@ -794,6 +727,5 @@ class SummaryBatchGetReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/meeting_room/summary/batch_get', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=SummaryBatchGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

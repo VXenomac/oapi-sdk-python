@@ -152,10 +152,7 @@ class MemberCreateReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[MemberCreateResult]]
@@ -164,8 +161,7 @@ class MemberCreateReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/permission/member/create', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=MemberCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class MemberDeleteReqCall(object):
@@ -175,10 +171,7 @@ class MemberDeleteReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[MemberDeleteResult]]
@@ -187,8 +180,7 @@ class MemberDeleteReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/permission/member/delete', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=MemberDeleteResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class MemberListReqCall(object):
@@ -198,10 +190,7 @@ class MemberListReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[MemberListResult]]
@@ -210,8 +199,7 @@ class MemberListReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/permission/member/list', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=MemberListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class MemberPermittedReqCall(object):
@@ -221,10 +209,7 @@ class MemberPermittedReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[MemberPermittedResult]]
@@ -233,8 +218,7 @@ class MemberPermittedReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/permission/member/permitted', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=MemberPermittedResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class MemberTransferReqCall(object):
@@ -244,10 +228,7 @@ class MemberTransferReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[MemberTransferResult]]
@@ -256,8 +237,7 @@ class MemberTransferReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/permission/member/transfer', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=MemberTransferResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class MemberUpdateReqCall(object):
@@ -267,10 +247,7 @@ class MemberUpdateReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[MemberUpdateResult]]
@@ -279,8 +256,7 @@ class MemberUpdateReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/permission/member/update', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=MemberUpdateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class PublicUpdateReqCall(object):
@@ -290,10 +266,7 @@ class PublicUpdateReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[PublicUpdateResult]]
@@ -302,6 +275,5 @@ class PublicUpdateReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/permission/public/update', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=PublicUpdateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

@@ -5,13 +5,13 @@ import json
 
 class JSONSerializable(object):
     def __str__(self):  # type: () -> str
-        d = {}
+        d = {
+            key: self.__getattribute__(key)
+            for key in self.__dict__.keys()
+            if not key.startswith('__') and not key.endswith('__')
+        }
 
-        for key in self.__dict__.keys():
-            if key.startswith('__') or key.endswith('__'):
-                continue
 
-            d[key] = self.__getattribute__(key)
         return json.dumps(d)
 
 
