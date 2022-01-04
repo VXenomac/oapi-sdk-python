@@ -44,13 +44,10 @@ class AwemeUserGetBindInfoReqCall(object):
         # type: (AwemeUserService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id_type(self, user_id_type):
         # type: (str) -> AwemeUserGetBindInfoReqCall
@@ -70,6 +67,5 @@ class AwemeUserGetBindInfoReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/aweme_ecosystem/v1/aweme_users/get_bind_info', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=AwemeUserGetBindInfoResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

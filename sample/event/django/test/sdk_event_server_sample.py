@@ -38,7 +38,6 @@ def user_update_handle(ctx, conf, event):
     print(ctx.get_request_id())
     print(event.header)
     print(event.event)
-    pass
 
 
 # set event type 'contact.user.updated_v3' handle
@@ -50,8 +49,11 @@ class SampleWebhookEventHandler(View):
     def post(self, request):  # type: (HttpRequest) -> HttpResponse
         oapi_request = OapiRequest(uri=request.path, body=request.body, header=OapiHeader(request.headers))
         oapi_resp = handle_event(conf, oapi_request)
-        resp = HttpResponse(oapi_resp.body, status=oapi_resp.status_code, content_type=oapi_resp.content_type)
-        return resp
+        return HttpResponse(
+            oapi_resp.body,
+            status=oapi_resp.status_code,
+            content_type=oapi_resp.content_type,
+        )
 
 
 urlpatterns = [

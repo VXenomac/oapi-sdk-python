@@ -91,14 +91,12 @@ class CardHandlers(object):
         card, conf = self.httpCard, self.conf
 
         if exception is not None:
+            content_type = DEFAULT_CONTENT_TYPE
+            status_code = HTTP_STATUS_INTERNAL_SERVER_ERROR
             if isinstance(exception, HandlerNotFoundError):
-                status_code = HTTP_STATUS_INTERNAL_SERVER_ERROR
-                content_type = DEFAULT_CONTENT_TYPE
                 body = RESPONSE_FORMAT % exception.__str__()
                 err_msg = 'handler not found, %s' % exception.__str__()
             else:
-                status_code = HTTP_STATUS_INTERNAL_SERVER_ERROR
-                content_type = DEFAULT_CONTENT_TYPE
                 body = RESPONSE_FORMAT % exception.__str__()
                 err_msg = 'err occurred, %s' % exception.__str__()
 

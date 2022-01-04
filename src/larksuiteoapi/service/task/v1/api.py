@@ -306,13 +306,10 @@ class TaskCompleteReqCall(object):
         # type: (TaskService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskCompleteReqCall
@@ -327,8 +324,7 @@ class TaskCompleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id/complete', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskCreateReqCall(object):
@@ -339,10 +335,7 @@ class TaskCreateReqCall(object):
         self.body = body
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id_type(self, user_id_type):
         # type: (str) -> TaskCreateReqCall
@@ -357,8 +350,7 @@ class TaskCreateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/task/v1/tasks', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=TaskCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskDeleteReqCall(object):
@@ -366,13 +358,10 @@ class TaskDeleteReqCall(object):
         # type: (TaskService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskDeleteReqCall
@@ -387,8 +376,7 @@ class TaskDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id', 'DELETE', [ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskGetReqCall(object):
@@ -396,14 +384,11 @@ class TaskGetReqCall(object):
         # type: (TaskService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskGetReqCall
@@ -424,8 +409,7 @@ class TaskGetReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=TaskGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskPatchReqCall(object):
@@ -437,10 +421,7 @@ class TaskPatchReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskPatchReqCall
@@ -461,8 +442,7 @@ class TaskPatchReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id', 'PATCH', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=TaskPatchResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskUncompleteReqCall(object):
@@ -470,13 +450,10 @@ class TaskUncompleteReqCall(object):
         # type: (TaskService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskUncompleteReqCall
@@ -491,8 +468,7 @@ class TaskUncompleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id/uncomplete', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskCollaboratorCreateReqCall(object):
@@ -504,10 +480,7 @@ class TaskCollaboratorCreateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskCollaboratorCreateReqCall
@@ -528,8 +501,7 @@ class TaskCollaboratorCreateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id/collaborators', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=TaskCollaboratorCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskCollaboratorDeleteReqCall(object):
@@ -537,13 +509,10 @@ class TaskCollaboratorDeleteReqCall(object):
         # type: (TaskCollaboratorService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskCollaboratorDeleteReqCall
@@ -563,8 +532,7 @@ class TaskCollaboratorDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id/collaborators/:collaborator_id', 'DELETE', [ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskCollaboratorListReqCall(object):
@@ -572,14 +540,11 @@ class TaskCollaboratorListReqCall(object):
         # type: (TaskCollaboratorService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskCollaboratorListReqCall
@@ -610,8 +575,7 @@ class TaskCollaboratorListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id/collaborators', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=TaskCollaboratorListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskCommentCreateReqCall(object):
@@ -622,10 +586,7 @@ class TaskCommentCreateReqCall(object):
         self.body = body
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskCommentCreateReqCall
@@ -640,8 +601,7 @@ class TaskCommentCreateReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id/comments', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=TaskCommentCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskCommentDeleteReqCall(object):
@@ -649,13 +609,10 @@ class TaskCommentDeleteReqCall(object):
         # type: (TaskCommentService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskCommentDeleteReqCall
@@ -675,8 +632,7 @@ class TaskCommentDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id/comments/:comment_id', 'DELETE', [ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskCommentGetReqCall(object):
@@ -684,13 +640,10 @@ class TaskCommentGetReqCall(object):
         # type: (TaskCommentService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskCommentGetReqCall
@@ -710,8 +663,7 @@ class TaskCommentGetReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id/comments/:comment_id', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=TaskCommentGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskCommentUpdateReqCall(object):
@@ -722,10 +674,7 @@ class TaskCommentUpdateReqCall(object):
         self.body = body
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskCommentUpdateReqCall
@@ -745,8 +694,7 @@ class TaskCommentUpdateReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id/comments/:comment_id', 'PUT', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=TaskCommentUpdateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskFollowerCreateReqCall(object):
@@ -758,10 +706,7 @@ class TaskFollowerCreateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskFollowerCreateReqCall
@@ -782,8 +727,7 @@ class TaskFollowerCreateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id/followers', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=TaskFollowerCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskFollowerDeleteReqCall(object):
@@ -791,13 +735,10 @@ class TaskFollowerDeleteReqCall(object):
         # type: (TaskFollowerService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskFollowerDeleteReqCall
@@ -817,8 +758,7 @@ class TaskFollowerDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id/followers/:follower_id', 'DELETE', [ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskFollowerListReqCall(object):
@@ -826,14 +766,11 @@ class TaskFollowerListReqCall(object):
         # type: (TaskFollowerService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskFollowerListReqCall
@@ -864,8 +801,7 @@ class TaskFollowerListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id/followers', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=TaskFollowerListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskReminderCreateReqCall(object):
@@ -876,10 +812,7 @@ class TaskReminderCreateReqCall(object):
         self.body = body
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskReminderCreateReqCall
@@ -894,8 +827,7 @@ class TaskReminderCreateReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id/reminders', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=TaskReminderCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskReminderDeleteReqCall(object):
@@ -903,13 +835,10 @@ class TaskReminderDeleteReqCall(object):
         # type: (TaskReminderService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskReminderDeleteReqCall
@@ -929,8 +858,7 @@ class TaskReminderDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id/reminders/:reminder_id', 'DELETE', [ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TaskReminderListReqCall(object):
@@ -938,14 +866,11 @@ class TaskReminderListReqCall(object):
         # type: (TaskReminderService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_task_id(self, task_id):
         # type: (str) -> TaskReminderListReqCall
@@ -971,6 +896,5 @@ class TaskReminderListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/task/v1/tasks/:task_id/reminders', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=TaskReminderListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

@@ -72,10 +72,7 @@ class FaceVerifyCropFaceImageReqCall(object):
         self.service = service
         self.body = FormData()
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_raw_image(self, raw_image):
         # type: (IO[Any]) -> FaceVerifyCropFaceImageReqCall
@@ -88,8 +85,7 @@ class FaceVerifyCropFaceImageReqCall(object):
 
         conf = root_service.conf
         req = APIRequest('/open-apis/face_verify/v1/crop_face_image', 'POST', [ACCESS_TOKEN_TYPE_TENANT], self.body, output_class=FaceVerifyCropFaceImageResult , request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class FaceVerifyQueryAuthResultReqCall(object):
@@ -97,13 +93,10 @@ class FaceVerifyQueryAuthResultReqCall(object):
         # type: (FaceVerifyService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_req_order_no(self, req_order_no):
         # type: (str) -> FaceVerifyQueryAuthResultReqCall
@@ -128,8 +121,7 @@ class FaceVerifyQueryAuthResultReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/face_verify/v1/query_auth_result', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=FaceVerifyQueryAuthResultResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class FaceVerifyUploadFaceImageReqCall(object):
@@ -140,10 +132,7 @@ class FaceVerifyUploadFaceImageReqCall(object):
         self.body = FormData()
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_image(self, image):
         # type: (IO[Any]) -> FaceVerifyUploadFaceImageReqCall
@@ -167,6 +156,5 @@ class FaceVerifyUploadFaceImageReqCall(object):
         conf = root_service.conf
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/face_verify/v1/upload_face_image', 'POST', [ACCESS_TOKEN_TYPE_TENANT], self.body, output_class=FaceVerifyUploadFaceImageResult , request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

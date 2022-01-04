@@ -395,13 +395,10 @@ class AppGetReqCall(object):
         # type: (AppService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppGetReqCall
@@ -416,8 +413,7 @@ class AppGetReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token', 'GET', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=AppGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableListReqCall(object):
@@ -425,14 +421,11 @@ class AppTableListReqCall(object):
         # type: (AppTableService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableListReqCall
@@ -458,8 +451,7 @@ class AppTableListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables', 'GET', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=AppTableListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableBatchCreateReqCall(object):
@@ -471,10 +463,7 @@ class AppTableBatchCreateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableBatchCreateReqCall
@@ -495,8 +484,7 @@ class AppTableBatchCreateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/batch_create', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=AppTableBatchCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableCreateReqCall(object):
@@ -508,10 +496,7 @@ class AppTableCreateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableCreateReqCall
@@ -532,8 +517,7 @@ class AppTableCreateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=AppTableCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableDeleteReqCall(object):
@@ -541,13 +525,10 @@ class AppTableDeleteReqCall(object):
         # type: (AppTableService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableDeleteReqCall
@@ -567,8 +548,7 @@ class AppTableDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/:table_id', 'DELETE', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableBatchDeleteReqCall(object):
@@ -579,10 +559,7 @@ class AppTableBatchDeleteReqCall(object):
         self.body = body
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableBatchDeleteReqCall
@@ -597,8 +574,7 @@ class AppTableBatchDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/batch_delete', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableFieldListReqCall(object):
@@ -606,14 +582,11 @@ class AppTableFieldListReqCall(object):
         # type: (AppTableFieldService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableFieldListReqCall
@@ -649,8 +622,7 @@ class AppTableFieldListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/:table_id/fields', 'GET', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=AppTableFieldListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableFieldCreateReqCall(object):
@@ -662,10 +634,7 @@ class AppTableFieldCreateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableFieldCreateReqCall
@@ -691,8 +660,7 @@ class AppTableFieldCreateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/:table_id/fields', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=AppTableFieldCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableFieldDeleteReqCall(object):
@@ -700,13 +668,10 @@ class AppTableFieldDeleteReqCall(object):
         # type: (AppTableFieldService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableFieldDeleteReqCall
@@ -731,8 +696,7 @@ class AppTableFieldDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/:table_id/fields/:field_id', 'DELETE', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=AppTableFieldDeleteResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableFieldUpdateReqCall(object):
@@ -743,10 +707,7 @@ class AppTableFieldUpdateReqCall(object):
         self.body = body
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableFieldUpdateReqCall
@@ -771,8 +732,7 @@ class AppTableFieldUpdateReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/:table_id/fields/:field_id', 'PUT', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=AppTableFieldUpdateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableRecordBatchDeleteReqCall(object):
@@ -783,10 +743,7 @@ class AppTableRecordBatchDeleteReqCall(object):
         self.body = body
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableRecordBatchDeleteReqCall
@@ -806,8 +763,7 @@ class AppTableRecordBatchDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/:table_id/records/batch_delete', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=AppTableRecordBatchDeleteResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableRecordBatchCreateReqCall(object):
@@ -819,10 +775,7 @@ class AppTableRecordBatchCreateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableRecordBatchCreateReqCall
@@ -848,8 +801,7 @@ class AppTableRecordBatchCreateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/:table_id/records/batch_create', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=AppTableRecordBatchCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableRecordGetReqCall(object):
@@ -857,14 +809,11 @@ class AppTableRecordGetReqCall(object):
         # type: (AppTableRecordService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableRecordGetReqCall
@@ -895,8 +844,7 @@ class AppTableRecordGetReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/:table_id/records/:record_id', 'GET', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=AppTableRecordGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableRecordUpdateReqCall(object):
@@ -908,10 +856,7 @@ class AppTableRecordUpdateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableRecordUpdateReqCall
@@ -942,8 +887,7 @@ class AppTableRecordUpdateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/:table_id/records/:record_id', 'PUT', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=AppTableRecordUpdateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableRecordDeleteReqCall(object):
@@ -951,13 +895,10 @@ class AppTableRecordDeleteReqCall(object):
         # type: (AppTableRecordService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableRecordDeleteReqCall
@@ -982,8 +923,7 @@ class AppTableRecordDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/:table_id/records/:record_id', 'DELETE', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=DeleteRecord, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableRecordListReqCall(object):
@@ -991,14 +931,11 @@ class AppTableRecordListReqCall(object):
         # type: (AppTableRecordService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableRecordListReqCall
@@ -1054,8 +991,7 @@ class AppTableRecordListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/:table_id/records', 'GET', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=AppTableRecordListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableRecordBatchUpdateReqCall(object):
@@ -1067,10 +1003,7 @@ class AppTableRecordBatchUpdateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableRecordBatchUpdateReqCall
@@ -1096,8 +1029,7 @@ class AppTableRecordBatchUpdateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/:table_id/records/batch_update', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=AppTableRecordBatchUpdateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableRecordCreateReqCall(object):
@@ -1109,10 +1041,7 @@ class AppTableRecordCreateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableRecordCreateReqCall
@@ -1138,8 +1067,7 @@ class AppTableRecordCreateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/:table_id/records', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=AppTableRecordCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableViewCreateReqCall(object):
@@ -1150,10 +1078,7 @@ class AppTableViewCreateReqCall(object):
         self.body = body
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableViewCreateReqCall
@@ -1173,8 +1098,7 @@ class AppTableViewCreateReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/:table_id/views', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=AppTableViewCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableViewDeleteReqCall(object):
@@ -1182,13 +1106,10 @@ class AppTableViewDeleteReqCall(object):
         # type: (AppTableViewService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableViewDeleteReqCall
@@ -1213,8 +1134,7 @@ class AppTableViewDeleteReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/:table_id/views/:view_id', 'DELETE', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AppTableViewListReqCall(object):
@@ -1222,14 +1142,11 @@ class AppTableViewListReqCall(object):
         # type: (AppTableViewService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_token(self, app_token):
         # type: (str) -> AppTableViewListReqCall
@@ -1260,6 +1177,5 @@ class AppTableViewListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/bitable/v1/apps/:app_token/tables/:table_id/views', 'GET', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=AppTableViewListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

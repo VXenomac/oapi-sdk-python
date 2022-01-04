@@ -60,13 +60,10 @@ class ImageGetReqCall(object):
         # type: (ImageService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_image_key(self, image_key):
         # type: (str) -> ImageGetReqCall
@@ -82,8 +79,7 @@ class ImageGetReqCall(object):
         self.request_opts += [set_is_response_stream()]
         req = APIRequest('/open-apis/image/v4/get', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class ImagePutReqCall(object):
@@ -93,10 +89,7 @@ class ImagePutReqCall(object):
         self.service = service
         self.body = FormData()
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_image(self, image):
         # type: (IO[Any]) -> ImagePutReqCall
@@ -114,6 +107,5 @@ class ImagePutReqCall(object):
 
         conf = root_service.conf
         req = APIRequest('/open-apis/image/v4/put', 'POST', [ACCESS_TOKEN_TYPE_TENANT], self.body, output_class=Image , request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

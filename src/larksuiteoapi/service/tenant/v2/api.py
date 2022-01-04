@@ -44,12 +44,9 @@ class TenantQueryReqCall(object):
         # type: (TenantService, List[Any]) -> None
 
         self.service = service
-        
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[TenantQueryResult]]
@@ -58,6 +55,5 @@ class TenantQueryReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/tenant/v2/tenant/query', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=TenantQueryResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

@@ -64,13 +64,10 @@ class AdminDeptStatListReqCall(object):
         # type: (AdminDeptStatService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_department_id_type(self, department_id_type):
         # type: (str) -> AdminDeptStatListReqCall
@@ -115,8 +112,7 @@ class AdminDeptStatListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/admin/v1/admin_dept_stats', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=AdminDeptStatListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class AdminUserStatListReqCall(object):
@@ -124,13 +120,10 @@ class AdminUserStatListReqCall(object):
         # type: (AdminUserStatService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_user_id_type(self, user_id_type):
         # type: (str) -> AdminUserStatListReqCall
@@ -180,6 +173,5 @@ class AdminUserStatListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/admin/v1/admin_user_stats', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=AdminUserStatListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

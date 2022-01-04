@@ -59,10 +59,7 @@ class DocsApiMetaReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[DocsApiMetaResult]]
@@ -71,8 +68,7 @@ class DocsApiMetaReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/suite/docs-api/meta', 'POST', [ACCESS_TOKEN_TYPE_USER],
                         self.body, output_class=DocsApiMetaResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class DocsApiSearchReqCall(object):
@@ -82,10 +78,7 @@ class DocsApiSearchReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[DocsApiSearchResult]]
@@ -94,6 +87,5 @@ class DocsApiSearchReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/suite/docs-api/search/object', 'POST', [ACCESS_TOKEN_TYPE_USER],
                         self.body, output_class=DocsApiSearchResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

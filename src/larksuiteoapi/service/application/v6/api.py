@@ -55,10 +55,7 @@ class ApplicationAppUsageOverviewReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_app_id(self, app_id):
         # type: (str) -> ApplicationAppUsageOverviewReqCall
@@ -79,6 +76,5 @@ class ApplicationAppUsageOverviewReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/application/v6/applications/:app_id/app_usage/overview', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=ApplicationAppUsageOverviewResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

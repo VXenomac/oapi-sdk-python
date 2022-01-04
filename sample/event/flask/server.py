@@ -62,7 +62,6 @@ def user_update(ctx, conf, event):
     print(ctx.get_request_id())
     print(event.header)
     print(event.event)
-    pass
 
 
 UserUpdatedEventHandler.set_callback(conf, user_update)

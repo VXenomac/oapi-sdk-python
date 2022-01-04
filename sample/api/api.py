@@ -97,20 +97,19 @@ def test_send_message():
 
 
 def test_upload_file():
-    img = open('./test.png', 'rb')
-    formData = FormData()
-    formData.add_param('image_type', 'message')
-    formData.add_file('image', FormDataFile(img))
-    req = Request('image/v4/put', 'POST', ACCESS_TOKEN_TYPE_TENANT, formData)
-    resp = req.do(conf)
-    print('request id = %s' % resp.get_request_id())
-    print(resp)
-    if resp.code == 0:
-        print(resp.data)
-    else:
-        print(resp.msg)
-        print(resp.error)
-    img.close()
+    with open('./test.png', 'rb') as img:
+        formData = FormData()
+        formData.add_param('image_type', 'message')
+        formData.add_file('image', FormDataFile(img))
+        req = Request('image/v4/put', 'POST', ACCESS_TOKEN_TYPE_TENANT, formData)
+        resp = req.do(conf)
+        print('request id = %s' % resp.get_request_id())
+        print(resp)
+        if resp.code == 0:
+            print(resp.data)
+        else:
+            print(resp.msg)
+            print(resp.error)
 
 
 def test_download_file(timeout=False):

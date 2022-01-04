@@ -16,7 +16,4 @@ class OapiResponse(object):
         if header is None:
             header = {}
 
-        if isinstance(header, dict):
-            self.header = OapiHeader(data=header)
-        else:
-            self.header = header
+        self.header = OapiHeader(data=header) if isinstance(header, dict) else header

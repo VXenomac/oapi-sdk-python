@@ -59,10 +59,7 @@ class TextTranslateReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[TextTranslateResult]]
@@ -71,8 +68,7 @@ class TextTranslateReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/translation/v1/text/translate', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=TextTranslateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class TextDetectReqCall(object):
@@ -82,10 +78,7 @@ class TextDetectReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[TextDetectResult]]
@@ -94,6 +87,5 @@ class TextDetectReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/translation/v1/text/detect', 'POST', [ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=TextDetectResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 

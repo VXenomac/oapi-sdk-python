@@ -43,10 +43,7 @@ class BotGetReqCall(object):
 
         self.service = service
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[BotGetResult]]
@@ -55,5 +52,4 @@ class BotGetReqCall(object):
         conf = root_service.conf
         req = APIRequest('bot/v3/info', 'GET', [ACCESS_TOKEN_TYPE_TENANT],
                       None, output_class=BotGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)

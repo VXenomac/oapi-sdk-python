@@ -32,10 +32,7 @@ class OapiHeader(object):
         self.__append_multiple(header)
 
     def get_keys(self):  # type: () -> List[str]
-        keys = []
-        for key in self.data.keys():
-            keys += [key]
-        return keys
+        return list(self.data.keys())
 
     def first_value(self, key):  # type: (str) -> Union[None, str]
         val = self.data.get(key.lower())

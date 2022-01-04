@@ -488,10 +488,7 @@ class FileUploadFinishReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[FileUploadFinishResult]]
@@ -500,8 +497,7 @@ class FileUploadFinishReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/v1/files/upload_finish', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=FileUploadFinishResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class FileUploadPrepareReqCall(object):
@@ -511,10 +507,7 @@ class FileUploadPrepareReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[FileUploadPrepareResult]]
@@ -523,8 +516,7 @@ class FileUploadPrepareReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/v1/files/upload_prepare', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=FileUploadPrepareResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class FileUploadAllReqCall(object):
@@ -534,10 +526,7 @@ class FileUploadAllReqCall(object):
         self.service = service
         self.body = FormData()
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_file_name(self, file_name):
         # type: (str) -> FileUploadAllReqCall
@@ -575,8 +564,7 @@ class FileUploadAllReqCall(object):
 
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/v1/files/upload_all', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT], self.body, output_class=FileUploadAllResult , request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class FileUploadPartReqCall(object):
@@ -586,10 +574,7 @@ class FileUploadPartReqCall(object):
         self.service = service
         self.body = FormData()
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_upload_id(self, upload_id):
         # type: (str) -> FileUploadPartReqCall
@@ -622,8 +607,7 @@ class FileUploadPartReqCall(object):
 
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/v1/files/upload_part', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT], self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class FileDownloadReqCall(object):
@@ -631,13 +615,10 @@ class FileDownloadReqCall(object):
         # type: (FileService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_file_token(self, file_token):
         # type: (str) -> FileDownloadReqCall
@@ -653,8 +634,7 @@ class FileDownloadReqCall(object):
         self.request_opts += [set_is_response_stream()]
         req = APIRequest('/open-apis/drive/v1/files/:file_token/download', 'GET', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class FileSubscribeReqCall(object):
@@ -662,14 +642,11 @@ class FileSubscribeReqCall(object):
         # type: (FileService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_file_token(self, file_token):
         # type: (str) -> FileSubscribeReqCall
@@ -690,8 +667,7 @@ class FileSubscribeReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/drive/v1/files/:file_token/subscribe', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class FileCommentCreateReqCall(object):
@@ -703,10 +679,7 @@ class FileCommentCreateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_file_token(self, file_token):
         # type: (str) -> FileCommentCreateReqCall
@@ -732,8 +705,7 @@ class FileCommentCreateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/drive/v1/files/:file_token/comments', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=FileComment, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class FileCommentGetReqCall(object):
@@ -741,14 +713,11 @@ class FileCommentGetReqCall(object):
         # type: (FileCommentService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_file_token(self, file_token):
         # type: (str) -> FileCommentGetReqCall
@@ -779,8 +748,7 @@ class FileCommentGetReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/drive/v1/files/:file_token/comments/:comment_id', 'GET', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=FileComment, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class FileCommentListReqCall(object):
@@ -788,14 +756,11 @@ class FileCommentListReqCall(object):
         # type: (FileCommentService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_file_token(self, file_token):
         # type: (str) -> FileCommentListReqCall
@@ -836,8 +801,7 @@ class FileCommentListReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/drive/v1/files/:file_token/comments', 'GET', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=FileCommentListResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class FileCommentPatchReqCall(object):
@@ -849,10 +813,7 @@ class FileCommentPatchReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_file_token(self, file_token):
         # type: (str) -> FileCommentPatchReqCall
@@ -878,8 +839,7 @@ class FileCommentPatchReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/drive/v1/files/:file_token/comments/:comment_id', 'PATCH', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class FileCommentReplyUpdateReqCall(object):
@@ -891,10 +851,7 @@ class FileCommentReplyUpdateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_file_token(self, file_token):
         # type: (str) -> FileCommentReplyUpdateReqCall
@@ -930,8 +887,7 @@ class FileCommentReplyUpdateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/drive/v1/files/:file_token/comments/:comment_id/replies/:reply_id', 'PUT', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class FileCommentReplyDeleteReqCall(object):
@@ -939,14 +895,11 @@ class FileCommentReplyDeleteReqCall(object):
         # type: (FileCommentReplyService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_file_token(self, file_token):
         # type: (str) -> FileCommentReplyDeleteReqCall
@@ -977,8 +930,7 @@ class FileCommentReplyDeleteReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/drive/v1/files/:file_token/comments/:comment_id/replies/:reply_id', 'DELETE', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class FileStatisticsGetReqCall(object):
@@ -986,14 +938,11 @@ class FileStatisticsGetReqCall(object):
         # type: (FileStatisticsService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_file_token(self, file_token):
         # type: (str) -> FileStatisticsGetReqCall
@@ -1014,8 +963,7 @@ class FileStatisticsGetReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/drive/v1/files/:file_token/statistics', 'GET', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         None, output_class=FileStatisticsGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class ImportTaskCreateReqCall(object):
@@ -1025,10 +973,7 @@ class ImportTaskCreateReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[ImportTaskCreateResult]]
@@ -1037,8 +982,7 @@ class ImportTaskCreateReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/v1/import_tasks', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=ImportTaskCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class ImportTaskGetReqCall(object):
@@ -1046,13 +990,10 @@ class ImportTaskGetReqCall(object):
         # type: (ImportTaskService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_ticket(self, ticket):
         # type: (str) -> ImportTaskGetReqCall
@@ -1067,8 +1008,7 @@ class ImportTaskGetReqCall(object):
         self.request_opts += [set_path_params(self.path_params)]
         req = APIRequest('/open-apis/drive/v1/import_tasks/:ticket', 'GET', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=ImportTaskGetResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class MediaUploadPartReqCall(object):
@@ -1078,10 +1018,7 @@ class MediaUploadPartReqCall(object):
         self.service = service
         self.body = FormData()
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_upload_id(self, upload_id):
         # type: (str) -> MediaUploadPartReqCall
@@ -1114,8 +1051,7 @@ class MediaUploadPartReqCall(object):
 
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/v1/medias/upload_part', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT], self.body, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class MediaUploadAllReqCall(object):
@@ -1125,10 +1061,7 @@ class MediaUploadAllReqCall(object):
         self.service = service
         self.body = FormData()
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_file_name(self, file_name):
         # type: (str) -> MediaUploadAllReqCall
@@ -1171,8 +1104,7 @@ class MediaUploadAllReqCall(object):
 
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/v1/medias/upload_all', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT], self.body, output_class=MediaUploadAllResult , request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class MediaUploadFinishReqCall(object):
@@ -1182,10 +1114,7 @@ class MediaUploadFinishReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[MediaUploadFinishResult]]
@@ -1194,8 +1123,7 @@ class MediaUploadFinishReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/v1/medias/upload_finish', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=MediaUploadFinishResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class MediaUploadPrepareReqCall(object):
@@ -1205,10 +1133,7 @@ class MediaUploadPrepareReqCall(object):
         self.service = service
         self.body = body
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def do(self):
         # type: () -> APIResponse[Type[MediaUploadPrepareResult]]
@@ -1217,8 +1142,7 @@ class MediaUploadPrepareReqCall(object):
         conf = root_service.conf
         req = APIRequest('/open-apis/drive/v1/medias/upload_prepare', 'POST', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         self.body, output_class=MediaUploadPrepareResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class MediaBatchGetTmpDownloadUrlReqCall(object):
@@ -1226,13 +1150,10 @@ class MediaBatchGetTmpDownloadUrlReqCall(object):
         # type: (MediaService, List[Any]) -> None
 
         self.service = service
-        
+
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_file_tokens(self, file_tokens):
         # type: (List[str]) -> MediaBatchGetTmpDownloadUrlReqCall
@@ -1252,8 +1173,7 @@ class MediaBatchGetTmpDownloadUrlReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/drive/v1/medias/batch_get_tmp_download_url', 'GET', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, output_class=MediaBatchGetTmpDownloadUrlResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class MediaDownloadReqCall(object):
@@ -1261,14 +1181,11 @@ class MediaDownloadReqCall(object):
         # type: (MediaService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_file_token(self, file_token):
         # type: (str) -> MediaDownloadReqCall
@@ -1290,8 +1207,7 @@ class MediaDownloadReqCall(object):
         self.request_opts += [set_is_response_stream()]
         req = APIRequest('/open-apis/drive/v1/medias/:file_token/download', 'GET', [ACCESS_TOKEN_TYPE_USER, ACCESS_TOKEN_TYPE_TENANT],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class PermissionMemberCreateReqCall(object):
@@ -1303,10 +1219,7 @@ class PermissionMemberCreateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_token(self, token):
         # type: (str) -> PermissionMemberCreateReqCall
@@ -1332,8 +1245,7 @@ class PermissionMemberCreateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/drive/v1/permissions/:token/members', 'POST', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         self.body, output_class=PermissionMemberCreateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class PermissionMemberDeleteReqCall(object):
@@ -1341,14 +1253,11 @@ class PermissionMemberDeleteReqCall(object):
         # type: (PermissionMemberService, List[Any]) -> None
 
         self.service = service
-        
+
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_token(self, token):
         # type: (str) -> PermissionMemberDeleteReqCall
@@ -1379,8 +1288,7 @@ class PermissionMemberDeleteReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/drive/v1/permissions/:token/members/:member_id', 'DELETE', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         None, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class PermissionMemberUpdateReqCall(object):
@@ -1392,10 +1300,7 @@ class PermissionMemberUpdateReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_token(self, token):
         # type: (str) -> PermissionMemberUpdateReqCall
@@ -1426,8 +1331,7 @@ class PermissionMemberUpdateReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/drive/v1/permissions/:token/members/:member_id', 'PUT', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         self.body, output_class=PermissionMemberUpdateResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
 
 class PermissionPublicPatchReqCall(object):
@@ -1439,10 +1343,7 @@ class PermissionPublicPatchReqCall(object):
         self.path_params = {}   # type: Dict[str, Any]
         self.query_params = {}  # type: Dict[str, Any]
 
-        if request_opts:
-            self.request_opts = request_opts
-        else:
-            self.request_opts = []  # type: List[Any]
+        self.request_opts = request_opts or []
 
     def set_token(self, token):
         # type: (str) -> PermissionPublicPatchReqCall
@@ -1463,6 +1364,5 @@ class PermissionPublicPatchReqCall(object):
         self.request_opts += [set_query_params(self.query_params)]
         req = APIRequest('/open-apis/drive/v1/permissions/:token/public', 'PATCH', [ACCESS_TOKEN_TYPE_TENANT, ACCESS_TOKEN_TYPE_USER],
                         self.body, output_class=PermissionPublicPatchResult, request_opts=self.request_opts)
-        resp = req.do(conf)
-        return resp
+        return req.do(conf)
 
